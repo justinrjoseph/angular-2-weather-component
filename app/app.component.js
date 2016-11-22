@@ -15,7 +15,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    \t<div class=\"container\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-3\">\n\t\t\t\t\t\t<weather-widget></weather-widget>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n    "
+            template: "\n    \t<div class=\"container\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-4\">\n\t\t\t\t\t\t<weather-widget></weather-widget>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n    ",
+            styles: ["\n\t\t\t.container {\n\t\t\t\tmargin-top: 5rem;\n\t\t\t}\n\t\t"]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -5,11 +5,16 @@
     template: `
     	<div class="container">
 				<div class="row">
-					<div class="col-xs-3">
+					<div class="col-xs-4">
 						<weather-widget></weather-widget>
 					</div>
 				</div>
 			</div>
-    `
+    `,
+		styles: [`
+			.container {
+				margin-top: 5rem;
+			}
+		`]
  })
  export class AppComponent {}

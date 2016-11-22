@@ -9,17 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var WeatherComponent = (function () {
+    function WeatherComponent() {
     }
-    AppComponent = __decorate([
+    WeatherComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    \t<div class=\"container\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-3\">\n\t\t\t\t\t\t<weather-widget></weather-widget>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n    "
+            moduleId: module.id,
+            selector: 'weather-widget',
+            templateUrl: 'weather.component.html',
+            styleUrls: ['weather.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], WeatherComponent);
+    return WeatherComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.WeatherComponent = WeatherComponent;
+//# sourceMappingURL=weather.component.js.map

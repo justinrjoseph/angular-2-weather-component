@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Weather } from '../models/weather';
+
 import { WeatherService } from '../services/weather.service';
 
-import { Weather } from '../models/weather';
+declare var Skycons: any;
 
 @Component({
 	moduleId: module.id,
@@ -17,6 +19,7 @@ export class WeatherComponent implements OnInit {
 	weather: Weather = new Weather(null, null, null, null, null);
 	currentSpeedUnit = 'mph';
 	currentTemperatureUnit = 'fahrenheit';
+	icons = new Skycons({ color: '#fff' });
 
 	constructor(private _weatherService: WeatherService) {}
 
@@ -47,6 +50,7 @@ export class WeatherComponent implements OnInit {
 									this.weather.wind = weather.currently.windSpeed,
 									this.weather.humidity = weather.currently.humidity,
 									this.weather.icon = weather.currently.icon
+									this.setIcon();
 								},
 								err => console.log(err)
 							);
@@ -73,5 +77,10 @@ export class WeatherComponent implements OnInit {
 
 	toggleSpeedUnits() {
 		this.currentSpeedUnit = this.currentSpeedUnit === 'mph' ? 'kph' : 'mph';
+	}
+
+	setIcon() {
+		this.icons.add('icon', this.weather.icon);
+		this.icons.play();
 	}
 }

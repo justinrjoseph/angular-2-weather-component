@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var weather_service_1 = require('../service/weather.service');
+var weather_1 = require('../models/weather');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
         var _this = this;
         this._weatherService = _weatherService;
+        this.weather = new weather_1.Weather(null, null, null, null, null);
         this._weatherService.getCurrentLocation()
             .subscribe(function (location) {
             _this.location = location;

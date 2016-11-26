@@ -6,14 +6,13 @@
 .card,
 .card-header,
 .card-footer {
-	background: #00bcd4;
-	color: #fff;
 	border: none;
 	border-radius: 0;
 }
 
 .card-header,
 .card-footer {
+	background-color: transparent;
 	padding: 1rem .5rem;
 }
 

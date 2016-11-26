@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Weather } from '../models/weather';
 
-import { WeatherService } from '../services/weather.service';
+import { WeatherService } from '../service/weather.service';
+
+import { WEATHER_COLORS } from '../constants/constants';
 
 declare var Skycons: any;
 
@@ -50,6 +52,7 @@ export class WeatherComponent implements OnInit {
 									this.weather.wind = weather.currently.windSpeed,
 									this.weather.humidity = weather.currently.humidity,
 									this.weather.icon = weather.currently.icon
+									console.log(weather);
 									this.setIcon();
 								},
 								err => console.log(err)
@@ -82,5 +85,15 @@ export class WeatherComponent implements OnInit {
 	setIcon() {
 		this.icons.add('icon', this.weather.icon);
 		this.icons.play();
+	}
+
+	setStyles() : Object {
+		if ( this.weather.icon ) {
+			this.icons.color = WEATHER_COLORS[this.weather.icon]['color'];
+			return WEATHER_COLORS[this.weather.icon];
+		} else {
+			this.icons.color = WEATHER_COLORS.default.color;
+			return WEATHER_COLORS.default;
+		}
 	}
 }

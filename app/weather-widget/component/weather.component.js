@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var weather_1 = require('../models/weather');
-var weather_service_1 = require('../services/weather.service');
+var weather_service_1 = require('../service/weather.service');
+var constants_1 = require('../constants/constants');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
         this._weatherService = _weatherService;
@@ -41,6 +42,7 @@ var WeatherComponent = (function () {
                 _this.weather.wind = weather.currently.windSpeed,
                 _this.weather.humidity = weather.currently.humidity,
                 _this.weather.icon = weather.currently.icon;
+            console.log(weather);
             _this.setIcon();
         }, function (err) { return console.log(err); });
     };
@@ -65,6 +67,16 @@ var WeatherComponent = (function () {
         this.icons.add('icon', this.weather.icon);
         this.icons.play();
     };
+    WeatherComponent.prototype.setStyles = function () {
+        if (this.weather.icon) {
+            this.icons.color = constants_1.WEATHER_COLORS[this.weather.icon]['color'];
+            return constants_1.WEATHER_COLORS[this.weather.icon];
+        }
+        else {
+            this.icons.color = constants_1.WEATHER_COLORS.default.color;
+            return constants_1.WEATHER_COLORS.default;
+        }
+    };
     WeatherComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -73,10 +85,9 @@ var WeatherComponent = (function () {
             styleUrls: ['weather.component.css'],
             providers: [weather_service_1.WeatherService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof weather_service_1.WeatherService !== 'undefined' && weather_service_1.WeatherService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [weather_service_1.WeatherService])
     ], WeatherComponent);
     return WeatherComponent;
-    var _a;
 }());
 exports.WeatherComponent = WeatherComponent;
 //# sourceMappingURL=weather.component.js.map

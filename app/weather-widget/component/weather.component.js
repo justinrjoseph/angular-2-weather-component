@@ -13,16 +13,31 @@ var weather_service_1 = require('../service/weather.service');
 var weather_1 = require('../models/weather');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
-        var _this = this;
         this._weatherService = _weatherService;
         this.weather = new weather_1.Weather(null, null, null, null, null);
+    }
+    WeatherComponent.prototype.ngOnInit = function () {
+        this.getCurrentWeather();
+    };
+    WeatherComponent.prototype.getCurrentWeather = function () {
+        var _this = this;
         this._weatherService.getCurrentLocation()
             .subscribe(function (location) {
             _this.location = location;
-            _this._weatherService.getCurrentWeather(_this.location.coords.latitude, _this.location.coords.longitude)
-                .subscribe(function (weather) { return console.log(weather); }, function (err) { return console.log(err); });
+            _this.getCurrentWeatherData();
         }, function (error) { return console.error(error); });
-    }
+    };
+    WeatherComponent.prototype.getCurrentWeatherData = function () {
+        var _this = this;
+        this._weatherService.getCurrentWeather(this.location.coords.latitude, this.location.coords.longitude)
+            .subscribe(function (weather) {
+            _this.weather.temperature = weather.currently.temperature,
+                _this.weather.summary = weather.currently.summary,
+                _this.weather.wind = weather.currently.windSpeed,
+                _this.weather.humidity = weather.currently.humidity,
+                _this.weather.icon = weather.currently.icon;
+        }, function (err) { return console.log(err); });
+    };
     WeatherComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

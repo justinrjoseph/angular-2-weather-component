@@ -85,9 +85,10 @@ var WeatherComponent = (function () {
             styleUrls: ['weather.component.css'],
             providers: [weather_service_1.WeatherService]
         }), 
-        __metadata('design:paramtypes', [weather_service_1.WeatherService])
+        __metadata('design:paramtypes', [(typeof (_a = typeof weather_service_1.WeatherService !== 'undefined' && weather_service_1.WeatherService) === 'function' && _a) || Object])
     ], WeatherComponent);
     return WeatherComponent;
+    var _a;
 }());
 exports.WeatherComponent = WeatherComponent;
 //# sourceMappingURL=weather.component.js.map

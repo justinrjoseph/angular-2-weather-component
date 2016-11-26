@@ -12,6 +12,20 @@ var core_1 = require('@angular/core');
 var WeatherService = (function () {
     function WeatherService() {
     }
+    WeatherService.prototype.getCurrentLocation = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                console.log('Postion: ', pos.coords.latitude, ', ', pos.coords.longitude);
+                return [pos.coords.latitude, pos.coords.longitude];
+            }, function (error) {
+                console.error('Unable to get position - ', error);
+            });
+        }
+        else {
+            console.error('Geolocation unavailable.');
+            return [0, 0];
+        }
+    };
     WeatherService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

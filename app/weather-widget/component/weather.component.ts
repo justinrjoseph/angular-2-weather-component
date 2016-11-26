@@ -11,6 +11,6 @@ import { WeatherService } from '../service/weather.service';
 })
 export class WeatherComponent {
 	constructor(private _weatherService: WeatherService) {
-
+		this._weatherService.getCurrentLocation();
 	}
 }

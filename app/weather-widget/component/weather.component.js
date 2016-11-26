@@ -13,6 +13,7 @@ var weather_service_1 = require('../service/weather.service');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
         this._weatherService = _weatherService;
+        this._weatherService.getCurrentLocation();
     }
     WeatherComponent = __decorate([
         core_1.Component({

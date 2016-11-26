@@ -5,23 +5,23 @@
 				<p>Westerville, OH</p>
 			</div>
 			<div class="col-xs-4 text-xs-right">
-				<h1>41&deg;</h1>
+				<h1>{{ weather.temperature | number: '.0-0' }}&deg;</h1>
 			</div>
 		</div>
 	</div>
 	<div class="card-block">
 		<h1>0</h1>
-		<p>Snow</p>
+		<p>{{ weather.summary }}</p>
 	</div>
 	<div class="card-footer">
 		<div class="row">
 			<div class="col-xs-5">
 				<p>Wind</p>
-				<p>14mph</p>
+				<p>{{ weather.wind }}mph</p>
 			</div>
 			<div class="col-xs-5 offset-xs-2">
 				<p>Humidity</p>
-				<p>80%</p>
+				<p>{{ weather.humidity | percent }}</p>
 			</div>
 		</div>
 	</div>

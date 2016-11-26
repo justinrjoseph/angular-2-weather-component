@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var weather_1 = require('../models/weather');
-var weather_service_1 = require('../service/weather.service');
+var weather_service_1 = require('../services/weather.service');
 var constants_1 = require('../constants/constants');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
@@ -20,6 +20,7 @@ var WeatherComponent = (function () {
         this.currentSpeedUnit = 'mph';
         this.currentTemperatureUnit = 'fahrenheit';
         this.icons = new Skycons({ color: '#fff' });
+        this.weatherReady = false;
     }
     WeatherComponent.prototype.ngOnInit = function () {
         this.getCurrentWeather();
@@ -37,13 +38,13 @@ var WeatherComponent = (function () {
         var _this = this;
         this._weatherService.getCurrentWeather(this.location.coords.latitude, this.location.coords.longitude)
             .subscribe(function (weather) {
-            _this.weather.temperature = weather.currently.temperature,
-                _this.weather.summary = weather.currently.summary,
-                _this.weather.wind = weather.currently.windSpeed,
-                _this.weather.humidity = weather.currently.humidity,
-                _this.weather.icon = weather.currently.icon;
-            console.log(weather);
+            _this.weather.temperature = weather.currently.temperature;
+            _this.weather.summary = weather.currently.summary;
+            _this.weather.wind = weather.currently.windSpeed;
+            _this.weather.humidity = weather.currently.humidity;
+            _this.weather.icon = weather.currently.icon;
             _this.setIcon();
+            _this.weatherReady = true;
         }, function (err) { return console.log(err); });
     };
     WeatherComponent.prototype.getLocationName = function () {
@@ -85,10 +86,9 @@ var WeatherComponent = (function () {
             styleUrls: ['weather.component.css'],
             providers: [weather_service_1.WeatherService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof weather_service_1.WeatherService !== 'undefined' && weather_service_1.WeatherService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [weather_service_1.WeatherService])
     ], WeatherComponent);
     return WeatherComponent;
-    var _a;
 }());
 exports.WeatherComponent = WeatherComponent;
 //# sourceMappingURL=weather.component.js.map

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Weather } from '../models/weather';
 
-import { WeatherService } from '../service/weather.service';
+import { WeatherService } from '../services/weather.service';
 
 import { WEATHER_COLORS } from '../constants/constants';
 
@@ -22,6 +22,7 @@ export class WeatherComponent implements OnInit {
 	currentSpeedUnit = 'mph';
 	currentTemperatureUnit = 'fahrenheit';
 	icons = new Skycons({ color: '#fff' });
+	weatherReady = false;
 
 	constructor(private _weatherService: WeatherService) {}
 
@@ -47,13 +48,13 @@ export class WeatherComponent implements OnInit {
 							)
 							.subscribe(
 								weather => {
-									this.weather.temperature = weather.currently.temperature,
-									this.weather.summary = weather.currently.summary,
-									this.weather.wind = weather.currently.windSpeed,
-									this.weather.humidity = weather.currently.humidity,
-									this.weather.icon = weather.currently.icon
-									console.log(weather);
+									this.weather.temperature = weather.currently.temperature;
+									this.weather.summary = weather.currently.summary;
+									this.weather.wind = weather.currently.windSpeed;
+									this.weather.humidity = weather.currently.humidity;
+									this.weather.icon = weather.currently.icon;
 									this.setIcon();
+									this.weatherReady = true;
 								},
 								err => console.log(err)
 							);

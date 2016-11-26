@@ -20,16 +20,14 @@ var WeatherService = (function () {
     }
     WeatherService.prototype.getCurrentLocation = function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                console.log('Postion: ', pos.coords.latitude, ', ', pos.coords.longitude);
-                return [pos.coords.latitude, pos.coords.longitude];
-            }, function (error) {
-                console.error('Unable to get position - ', error);
+            return Observable_1.Observable.create(function (observer) {
+                navigator.geolocation.getCurrentPosition(function (location) { return observer.next(location); }, function (error) {
+                    return Observable_1.Observable.throw(error);
+                });
             });
         }
         else {
-            console.error('Geolocation unavailable.');
-            return [0, 0];
+            return Observable_1.Observable.throw('Geolocation unavailable.');
         }
     };
     WeatherService.prototype.getCurrentWeather = function (lat, long) {

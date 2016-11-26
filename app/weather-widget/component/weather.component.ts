@@ -10,12 +10,22 @@ import { WeatherService } from '../service/weather.service';
 	providers: [ WeatherService ]
 })
 export class WeatherComponent {
+	location: Position;
+
 	constructor(private _weatherService: WeatherService) {
-		this._weatherService.getCurrentLocation();
-		this._weatherService.getCurrentWeather(0, 0)
+		this._weatherService.getCurrentLocation()
 							.subscribe(
-								weather => console.log(weather),
-								err => console.log(err)
-							);
+								location => {
+									this.location = location;
+									this._weatherService.getCurrentWeather(
+															this.location.coords.latitude,
+															this.location.coords.longitude
+														)
+														.subscribe(
+															weather => console.log(weather),
+															err => console.log(err)
+														);
+								},
+								error => console.error(error));
 	}
 }

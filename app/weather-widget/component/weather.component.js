@@ -49,6 +49,16 @@ var WeatherComponent = (function () {
             _this.city = location.results[2].formatted_address;
         });
     };
+    WeatherComponent.prototype.toggleUnits = function () {
+        this.toggleTempUnits();
+        this.toggleSpeedUnits();
+    };
+    WeatherComponent.prototype.toggleTempUnits = function () {
+        this.currentTemperatureUnit = this.currentTemperatureUnit === 'fahrenheit' ? 'celsius' : 'fahrenheit';
+    };
+    WeatherComponent.prototype.toggleSpeedUnits = function () {
+        this.currentSpeedUnit = this.currentSpeedUnit === 'mph' ? 'kph' : 'mph';
+    };
     WeatherComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

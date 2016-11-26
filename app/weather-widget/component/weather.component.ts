@@ -61,4 +61,17 @@ export class WeatherComponent implements OnInit {
 								this.city = location.results[2].formatted_address;
 							});
 	}
+
+	toggleUnits() {
+		this.toggleTempUnits();
+		this.toggleSpeedUnits();
+	}
+
+	toggleTempUnits() {
+		this.currentTemperatureUnit = this.currentTemperatureUnit === 'fahrenheit' ? 'celsius' : 'fahrenheit';
+	}
+
+	toggleSpeedUnits() {
+		this.currentSpeedUnit = this.currentSpeedUnit === 'mph' ? 'kph' : 'mph';
+	}
 }

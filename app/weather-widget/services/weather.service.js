@@ -31,7 +31,7 @@ var WeatherService = (function () {
         }
     };
     WeatherService.prototype.getCurrentWeather = function (lat, long) {
-        var URL = constants_1.FORECAST_ROOT + constants_1.FORECAST_KEY;
+        var URL = constants_1.FORECAST_BASE_URL + constants_1.FORECAST_KEY;
         var PARAMS = '/' + lat + ',' + long + '?callback=JSONP_CALLBACK';
         return this._jsonp.get(URL + PARAMS)
             .map(function (data) { return data.json(); })

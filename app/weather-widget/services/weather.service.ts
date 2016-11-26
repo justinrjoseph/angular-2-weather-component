@@ -6,7 +6,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { FORECAST_KEY, FORECAST_ROOT } from '../constants/constants';
+import { 
+    FORECAST_KEY,
+    FORECAST_BASE_URL,
+    GEOLOCATION_KEY,
+    GEOLOCATION_BASE_URL
+} from '../constants/constants';
 
 @Injectable()
 export class WeatherService {
@@ -28,7 +33,7 @@ export class WeatherService {
     }
 
     getCurrentWeather(lat: number, long: number) : Observable<any> {
-        const URL = FORECAST_ROOT + FORECAST_KEY;
+        const URL = FORECAST_BASE_URL + FORECAST_KEY;
         const PARAMS = '/' + lat + ',' + long + '?callback=JSONP_CALLBACK';
 
         return this._jsonp.get(URL + PARAMS)

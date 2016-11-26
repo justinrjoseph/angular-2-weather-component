@@ -10,7 +10,11 @@
 		</div>
 	</div>
 	<div class="card-block">
-		<canvas id="icon"></canvas>
+		<div id="indicator" [hidden]="!weatherReady">
+			<i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
+			<span class="sr-only">Loading...</span>
+		</div>
+		<canvas id="icon" [hidden]="!weatherReady"></canvas>
 		<p>{{ weather.summary }}</p>
 	</div>
 	<div class="card-footer" [class.invisible]="!weatherReady">

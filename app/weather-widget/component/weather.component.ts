@@ -13,6 +13,7 @@ import { Weather } from '../models/weather';
 })
 export class WeatherComponent implements OnInit {
 	location: Position;
+	city = '';
 	weather: Weather = new Weather(null, null, null, null, null);
 	currentSpeedUnit = 'mph';
 	currentTemperatureUnit = 'fahrenheit';
@@ -28,6 +29,7 @@ export class WeatherComponent implements OnInit {
 							.subscribe(
 								location => {
 									this.location = location;
+									this.getLocationName();
 									this.getCurrentWeatherData();
 								},
 								error => console.error(error));
@@ -45,9 +47,18 @@ export class WeatherComponent implements OnInit {
 									this.weather.wind = weather.currently.windSpeed,
 									this.weather.humidity = weather.currently.humidity,
 									this.weather.icon = weather.currently.icon
-									console.log(this.weather);
 								},
 								err => console.log(err)
 							);
+	}
+
+	getLocationName() {
+		this._weatherService.getLocationName(
+								this.location.coords.latitude,
+								this.location.coords.longitude
+							)
+							.subscribe(location => {
+								this.city = location.results[2].formatted_address;
+							});
 	}
 }

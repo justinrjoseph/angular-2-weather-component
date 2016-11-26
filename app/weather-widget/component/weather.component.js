@@ -14,6 +14,7 @@ var weather_1 = require('../models/weather');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
         this._weatherService = _weatherService;
+        this.city = '';
         this.weather = new weather_1.Weather(null, null, null, null, null);
         this.currentSpeedUnit = 'mph';
         this.currentTemperatureUnit = 'fahrenheit';
@@ -26,6 +27,7 @@ var WeatherComponent = (function () {
         this._weatherService.getCurrentLocation()
             .subscribe(function (location) {
             _this.location = location;
+            _this.getLocationName();
             _this.getCurrentWeatherData();
         }, function (error) { return console.error(error); });
     };
@@ -38,8 +40,14 @@ var WeatherComponent = (function () {
                 _this.weather.wind = weather.currently.windSpeed,
                 _this.weather.humidity = weather.currently.humidity,
                 _this.weather.icon = weather.currently.icon;
-            console.log(_this.weather);
         }, function (err) { return console.log(err); });
+    };
+    WeatherComponent.prototype.getLocationName = function () {
+        var _this = this;
+        this._weatherService.getLocationName(this.location.coords.latitude, this.location.coords.longitude)
+            .subscribe(function (location) {
+            _this.city = location.results[2].formatted_address;
+        });
     };
     WeatherComponent = __decorate([
         core_1.Component({

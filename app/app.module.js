@@ -28,6 +28,7 @@ var AppModule = (function () {
             ],
             imports: [
                 platform_browser_1.BrowserModule,
+                http_1.HttpModule,
                 http_1.JsonpModule
             ],
             bootstrap: [app_component_1.AppComponent]

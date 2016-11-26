@@ -15,8 +15,9 @@ require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var constants_1 = require('../constants/constants');
 var WeatherService = (function () {
-    function WeatherService(_jsonp) {
+    function WeatherService(_jsonp, _http) {
         this._jsonp = _jsonp;
+        this._http = _http;
     }
     WeatherService.prototype.getCurrentLocation = function () {
         if (navigator.geolocation) {
@@ -40,9 +41,19 @@ var WeatherService = (function () {
             return Observable_1.Observable.throw(err.json());
         });
     };
+    WeatherService.prototype.getLocationName = function (lat, long) {
+        var URL = constants_1.GEOCODING_BASE_URL;
+        var PARAMS = '?latlng=' + lat + ',' + long + '&key=' + constants_1.GEOCODING_KEY;
+        return this._http.get(URL + PARAMS)
+            .map(function (location) { return location.json(); })
+            .catch(function (err) {
+            console.error(err);
+            return Observable_1.Observable.throw(err);
+        });
+    };
     WeatherService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Jsonp])
+        __metadata('design:paramtypes', [http_1.Jsonp, http_1.Http])
     ], WeatherService);
     return WeatherService;
 }());

@@ -9,13 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var weather_service_1 = require('../service/weather.service');
+var weather_service_1 = require('../services/weather.service');
 var weather_1 = require('../models/weather');
 var WeatherComponent = (function () {
     function WeatherComponent(_weatherService) {
         this._weatherService = _weatherService;
         this.weather = new weather_1.Weather(null, null, null, null, null);
         this.currentSpeedUnit = 'mph';
+        this.currentTemperatureUnit = 'fahrenheit';
     }
     WeatherComponent.prototype.ngOnInit = function () {
         this.getCurrentWeather();

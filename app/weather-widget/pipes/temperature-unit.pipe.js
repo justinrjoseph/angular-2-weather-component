@@ -9,25 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var SpeedUnitPipe = (function () {
-    function SpeedUnitPipe() {
+var TemperatureUnitPipe = (function () {
+    function TemperatureUnitPipe() {
     }
-    SpeedUnitPipe.prototype.transform = function (speed, unitType) {
-        switch (unitType) {
-            case 'mph':
-                var MILES = speed * 1.6;
-                return MILES + 'mph';
-            default:
-                return speed + 'kph';
+    TemperatureUnitPipe.prototype.transform = function (temperature, unitType) {
+        if (unitType === 'celsius') {
+            var CELSIUS = (temperature - 32) * 0.5556;
+            return CELSIUS;
+        }
+        else {
+            return temperature;
         }
     };
-    SpeedUnitPipe = __decorate([
+    TemperatureUnitPipe = __decorate([
         core_1.Pipe({
-            name: 'speedUnit'
+            name: 'temperatureUnit'
         }), 
         __metadata('design:paramtypes', [])
-    ], SpeedUnitPipe);
-    return SpeedUnitPipe;
+    ], TemperatureUnitPipe);
+    return TemperatureUnitPipe;
 }());
-exports.SpeedUnitPipe = SpeedUnitPipe;
-//# sourceMappingURL=speed-unit.pipe.js.map
+exports.TemperatureUnitPipe = TemperatureUnitPipe;
+//# sourceMappingURL=temperature-unit.pipe.js.map

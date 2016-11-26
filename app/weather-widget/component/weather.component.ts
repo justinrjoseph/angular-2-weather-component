@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { WeatherService } from '../service/weather.service';
+import { WeatherService } from '../services/weather.service';
 
 import { Weather } from '../models/weather';
 
@@ -15,6 +15,7 @@ export class WeatherComponent implements OnInit {
 	location: Position;
 	weather: Weather = new Weather(null, null, null, null, null);
 	currentSpeedUnit = 'mph';
+	currentTemperatureUnit = 'fahrenheit';
 
 	constructor(private _weatherService: WeatherService) {}
 

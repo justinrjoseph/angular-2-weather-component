@@ -5,10 +5,13 @@ import { JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather-widget/component/weather.component';
 
+import { SpeedUnitPipe } from './weather-widget/pipes/speed-unit.pipe';
+
 @NgModule({
     declarations: [
         AppComponent,
-        WeatherComponent
+        WeatherComponent,
+        SpeedUnitPipe
     ],
     imports: [ 
         BrowserModule,

@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var weather_component_1 = require('./weather-widget/component/weather.component');
+var speed_unit_pipe_1 = require('./weather-widget/pipes/speed-unit.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,7 +21,8 @@ var AppModule = (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                weather_component_1.WeatherComponent
+                weather_component_1.WeatherComponent,
+                speed_unit_pipe_1.SpeedUnitPipe
             ],
             imports: [
                 platform_browser_1.BrowserModule,

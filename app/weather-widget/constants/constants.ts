@@ -46,6 +46,6 @@ export const WEATHER_COLORS = {
     },
     'partly-cloudy-night': {
         'background-color': '#34495e',
-        'color': '#000'
+        'color': '#fff'
     }
 };

@@ -1,5 +1,6 @@
 .card {
 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .24);
+	transition: background-color .5s ease;
 	cursor: pointer;
 }
 
@@ -16,8 +17,30 @@
 	padding: 1rem .5rem;
 }
 
+#city-wrapper {
+	font-size: 1.1rem;
+}
+
 .card-block {
-	padding: 3rem;
+	padding: 1.5rem 0;
+}
+
+#indicator {
+	position: relative;
+	height: 165px;
+}
+
+#indicator i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	margin: -8% 0 0 -25%;
+}
+
+canvas {
+	max-width: 250px;
+	margin-bottom: 1rem;
 }
 
 .card-block,
@@ -25,7 +48,22 @@
 	text-align: center;
 }
 
+.card-footer {
+	padding-bottom: .5rem;
+}
+
+#detail-row {
+	font-size: .8rem;
+}
+
+#helper-row {
+	padding-top: .5rem;
+}
+
 p {
 	margin: .2rem;
+}
+
+p:not(.unit-label) {
 	text-transform: uppercase;
 }
